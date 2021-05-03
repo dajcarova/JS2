@@ -1,0 +1,23 @@
+/* Calendar */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-content__day {
+  aspect-ratio: 1/1;
+  width: calc(100% / 7 - 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.main-content div:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+

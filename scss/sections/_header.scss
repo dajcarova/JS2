@@ -1,0 +1,13 @@
+header.header-news{
+  min-height: 18rem;
+  position: relative;
+
+  .header-news__container {
+    min-height: 18rem;
+    display: flex;
+
+    & div{
+      flex: 1 0 0;
+    }
+  }
+}
