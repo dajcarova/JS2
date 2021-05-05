@@ -1,6 +1,8 @@
 const header = document.querySelector('.header-news__container');
 let carouselItemStart = 0
 let articles;
+const btnPrev = document.querySelector('#carousel-button-prev')
+const btnNext = document.querySelector('#carousel-button-next')
 
 const carouselItemCount = 3;
 
@@ -11,6 +13,18 @@ fetch('http://localhost:3000/news.json')
     articles = data.articles;
     populateNewsCarousel(data.articles, 0);
   });
+function checkButtonsVisibility(){
+  if(carouselItemStart === 0){
+    btnPrev.style.display = 'none';
+  }
+  else if(carouselItemStart >= (articles.length - carouselItemCount)){
+    btnNext.style.display = 'none';
+  }
+  else{
+    btnPrev.style.display = 'block';
+    btnNext.style.display = 'block';
+  }
+}
 
 function populateNewsCarousel(news, startAt){
   header.innerText = ''
@@ -18,6 +32,7 @@ function populateNewsCarousel(news, startAt){
     let newsArticle = createDivForNews(news[i])
     header.appendChild(newsArticle)
   }
+  checkButtonsVisibility()
 }
 
 function createDivForNews(newsItem){
@@ -30,10 +45,6 @@ function createDivForNews(newsItem){
   newsArticle.appendChild(title)
   return newsArticle;
 }
-
-
-const btnPrev = document.querySelector('#carousel-button-prev')
-const btnNext = document.querySelector('#carousel-button-next')
 
 
 

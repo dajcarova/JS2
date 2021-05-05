@@ -3,7 +3,21 @@
   cursor: pointer;
   top: 0;
   height: 100%;
-  opacity: .5;
+  background-color: transparent;
+  color: rgba($black, .4);
+  cursor: pointer;
+  border-radius: 0;
+  user-select: none;
+  transition: .5s;
+
+  &:focus{
+    outline: none;
+  }
+
+  &:hover{
+    background-color: rgba($white, .4);
+    color: $black;
+  }
 }
 .button--next{
   right: 0;
