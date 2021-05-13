@@ -15,3 +15,5 @@ function createDivForCalendar(n){
 }
 
 createCalendar()
+
+console.log('work')

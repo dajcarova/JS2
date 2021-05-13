@@ -1,3 +1,5 @@
+import {NewsArticle} from '../components/news-article/NewsArticle.js'
+
 const header = document.querySelector('.header-news__container');
 let carouselItemStart = 0
 let articles;
@@ -29,24 +31,11 @@ function checkButtonsVisibility(){
 function populateNewsCarousel(news, startAt){
   header.innerText = ''
   for(let i = startAt; i < startAt + carouselItemCount; i++){
-    let newsArticle = createDivForNews(news[i])
-    header.appendChild(newsArticle)
+    let newsArticle = new NewsArticle()
+    header.appendChild(newsArticle.createDivForNews(news[i]))
   }
   checkButtonsVisibility()
 }
-
-function createDivForNews(newsItem){
-  const newsArticle = document.createElement('div');
-  const title = document.createElement('span');
-  title.classList.add('news-article__title')
-  newsArticle.classList.add('news-article')
-  newsArticle.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, .5), transparent), url(${newsItem.image})`
-  newsArticle.innerText = newsItem.title;
-  newsArticle.appendChild(title)
-  return newsArticle;
-}
-
-
 
 btnPrev.addEventListener('click', () => {
   carouselItemStart --;
@@ -57,3 +46,4 @@ btnNext.addEventListener('click', () => {
   carouselItemStart ++;
   populateNewsCarousel(articles, carouselItemStart);
 });
+
