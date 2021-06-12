@@ -12,21 +12,19 @@ fetch('http://localhost:3000/news.json')
 
   const main = document.querySelector('.main-content');
 
-function createCalendar(){
-  for(let i = 0; i < 31; i++){
-    const day = new Day(i + 1);
-    // let day = createDivForCalendar(i + 1)
-    main.appendChild(day)
+const currentDate = new Date();
+const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+
+  for(let i = 0; i <= maxDate; i++){
+    const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i)
+    main.appendChild(new Day(dayDate))
   }
-}
-
-function createDivForCalendar(n){
-  const day = document.createElement('div');
-  day.classList.add('main-content__day')
-  day.innerText = n;
-  return day;
-}
-
-createCalendar()
 
 console.log('work')
+
+const buttonOpenModal = document.querySelector('.open-modal')
+const modalContainer = document.querySelector('.modal-container')
+buttonOpenModal.addEventListener('click', () =>{
+  modalContainer.hidden = false
+})
