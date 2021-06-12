@@ -75,3 +75,55 @@ fetch('http://localhost:3000/contacts')
 }
 
 window.showModal = showDayModal
+
+// homework 5
+
+let userInput = []
+document.addEventListener('keydown', (keyboardEvent) => {
+
+  
+  userInput.push(keyboardEvent.key)
+
+  if((userInput.toString()).indexOf('t,i,m,e') > -1){
+    showTimeModal()
+    userInput = []
+  }
+
+  // heslo = clock
+  if((userInput.toString()).indexOf('c,l,o,c,k') > -1){
+    showTimeModal()
+    userInput = []
+  }
+  console.log(userInput.toString())
+})
+
+
+
+function showTimeModal(){
+  const clockTemplate = document.querySelector('#clock-template');
+  const clock = clockTemplate.content.cloneNode(true);
+  document.body.appendChild(clock);
+  const clockContainer = document.querySelector('.clock-container');
+   
+
+  for(let i = 0; i < 5; i++){
+    setTimeout(
+      () => {
+        let clockTime = new Date()
+   
+        clockContainer.innerText = clockTime.toLocaleTimeString();
+      },
+      i * 1000,
+     );
+  }
+
+  setTimeout(
+    () => {
+      document.body.removeChild(clockContainer);
+    },
+    5000,
+   );
+
+}
+
+// end of homework 5
