@@ -23,8 +23,39 @@ const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 
 
 console.log('work')
 
-const buttonOpenModal = document.querySelector('.open-modal')
-const modalContainer = document.querySelector('.modal-container')
-buttonOpenModal.addEventListener('click', () =>{
-  modalContainer.hidden = false
+
+const openModalButton = document.querySelector('.open-modal')
+openModalButton.addEventListener('click', ()=>{
+  showDayModal().then((result) => console.log(result))
+  
 })
+
+function showDayModal(){
+
+  const promiseResult = new Promise((resolve, reject) => {
+
+    const template = document.querySelector('#modal-template')
+    const modal = template.content.cloneNode(true)
+
+    const closeAction = () => {
+      document.body.removeChild(document.querySelector('section.modal-container'))
+      resolve(null)
+    }
+
+    modal.querySelector('#close-modal').addEventListener('click', closeAction)
+
+    modal.querySelector('#cancel-button').addEventListener('click', closeAction)
+
+    modal.querySelector('#save-button').addEventListener('click', () => {
+      const formRef = document.querySelector('#modal-form')
+
+      const formData = new FormData(formRef)
+      const isHoliday = formData.get('isHoliday') === 'on'
+      resolve('ahoj')
+    })
+
+    document.body.appendChild(modal)
+  })
+
+  return promiseResult
+}
