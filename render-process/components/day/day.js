@@ -33,7 +33,7 @@ export class Day extends HTMLElement{
   }
 
   handleClickEvent(){
-    alert('Today is: ', this.getDayName())
+    window.showModal()
   }
 
 }
