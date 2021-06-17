@@ -33,7 +33,7 @@ export class Day extends HTMLElement{
   }
 
   handleClickEvent(){
-    window.showModal()
+    window.showModal(this.date)
   }
 
 }
